@@ -47,8 +47,11 @@ const Hero = ({ language }: { language: string }) => {
       >
         <section className="flex gap-28 justify-between items-center mb-20 max-md:flex-col-reverse max-md:text-center max-md:gap-10">
           <article className="max-w-xl">
-            <h1 className="text-7xl font-extrabold m-6 ml-4 max-md:text-6xl max-md:mb-20">
-              Full Stack {language == "de" ? "Entwickler" : "Developer"} 👋
+            <h1 className="text-7xl font-extrabold m-6 ml-4 mb-14 max-md:text-6xl max-md:mb-20 relative">
+              Full Stack {language == "de" ? "Entwickler" : "Developer"}{" "}
+              <div className="waitShake absolute top-8 right-10 text-8xl">
+                <span>👋</span>
+              </div>
             </h1>
             <h3 className="text-2xl m-4">
               {language == "de" ? "Moin, Ich bin " : "Hi there, I'm "}
@@ -75,8 +78,25 @@ const Hero = ({ language }: { language: string }) => {
         </section>
         <section className="m-4 flex gap-10 items-center mt-10 max-md:flex-col max-md:mt-0 max-md:mb-6">
           <>
-            <div className="flex gap-5 max-md:flex-col">
-              <h5 className="text-xl font-bold">Tech Stack</h5>
+            <div className="flex gap-5 max-md:flex-col relative">
+              <h5 className="text-xl font-bold pr-6 max-md:pr-0">Tech Stack</h5>
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger className="text-xl absolute -top-4 right-4 waitJello">
+                    <span className="text-red-600 bg-red-300 rounded-full px-2">
+                      ?
+                    </span>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p className="text-xl">
+                      {language == "de"
+                        ? "Maus über Logo halten"
+                        : "Hover with mouse over logos"}
+                    </p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+
               {matches ? (
                 <Separator className="my-5 dark:bg-white" />
               ) : (
