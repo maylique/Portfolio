@@ -43,13 +43,13 @@ const Hero = ({ language }: { language: string }) => {
     <>
       <main
         id="home"
-        className="m-5 mt-0 flex flex-col min-h-dvh items-center justify-center"
+        className="m-5 mt-0 flex flex-col min-h-dvh items-center justify-center max-md:mt-10"
       >
         <section className="flex gap-28 justify-between items-center mb-20 max-md:flex-col-reverse max-md:text-center max-md:gap-10">
           <article className="max-w-xl">
             <h1 className="text-7xl font-extrabold m-6 ml-4 mb-14 max-md:text-6xl max-md:mb-20 relative">
               Full Stack {language == "de" ? "Entwickler" : "Developer"}{" "}
-              <div className="waitShake absolute top-8 right-10 text-8xl">
+              <div className="waitShake max-md:my-3 max-md:static absolute top-8 right-10 text-8xl">
                 <span>👋</span>
               </div>
             </h1>
@@ -82,7 +82,7 @@ const Hero = ({ language }: { language: string }) => {
               <h5 className="text-xl font-bold pr-6 max-md:pr-0">Tech Stack</h5>
               <TooltipProvider>
                 <Tooltip>
-                  <TooltipTrigger className="text-xl absolute -top-4 right-4 waitJello">
+                  <TooltipTrigger className="text-xl absolute -top-4 right-4 max-md:-right-7 max-md:-top-3 waitJello">
                     <span className="text-red-600 bg-red-300 rounded-full px-2">
                       ?
                     </span>

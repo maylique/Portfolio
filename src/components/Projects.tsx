@@ -39,8 +39,8 @@ const Projects = ({ language }: { language: string }) => {
           </h2>
           <p className="text-center text-xl flex max-md:flex-col max-md:gap-4">
             {language == "de"
-              ? "Hier sind ein paar Beispiele, an welchen Projekten ich bereits gearbeitet habe."
-              : "Here are some examples on which projects i have worked before."}{" "}
+              ? "Hier sind ein paar Beispiele, an welchen Projekten ich bereits gearbeitet habe. Auf die Bilder klicken, um auf die Seite zu gelangen."
+              : "Here are some examples on which projects i have worked before. Click on the pictures to get to the page."}
             <span className="text-red-600 font-bold pl-12 max-md:pl-0">
               <TooltipProvider>
                 <Tooltip>
