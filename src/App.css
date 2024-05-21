@@ -1,0 +1,23 @@
+#root {
+  min-height: 100dvh;
+  display: flex;
+  place-items: center;
+  flex-direction: column;
+}
+
+nav a:hover {
+  opacity: 0.8;
+}
+
+.phone {
+  border-radius: 3.5rem;
+  max-height: 40rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+*.dark {
+  scrollbar-color: #121212 #242424;
+}
