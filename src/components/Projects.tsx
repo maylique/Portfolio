@@ -14,6 +14,9 @@ const Projects = ({ language }: { language: string }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isHovered2, setIsHovered2] = useState(false);
   const { theme } = useTheme();
+  const [matches, setMatches] = useState(
+    matchMedia("(max-width: 768px)").matches
+  );
 
   useEffect(() => {
     setIsDark(theme === "dark" ? true : false);
@@ -24,6 +27,16 @@ const Projects = ({ language }: { language: string }) => {
         : false;
 
       setIsDark(systemTheme);
+
+      const handleResize = () => {
+        setMatches(matchMedia("(max-width: 768px)").matches);
+      };
+
+      window.addEventListener("resize", handleResize);
+
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
     }
   }, [theme]);
 
@@ -72,8 +85,8 @@ const Projects = ({ language }: { language: string }) => {
                     isHovered ? "/cringeMainDark.png" : "/cringeLandDark.png"
                   }
                   alt=""
-                  onMouseOver={() => setIsHovered(true)}
-                  onMouseOut={() => setIsHovered(false)}
+                  onMouseOver={() => !matches && setIsHovered(true)}
+                  onMouseOut={() => !matches && setIsHovered(false)}
                 />
               ) : (
                 <img
@@ -82,19 +95,18 @@ const Projects = ({ language }: { language: string }) => {
                     isHovered ? "/cringeMainLight.png" : "/cringeLandLight.png"
                   }
                   alt=""
-                  onMouseOver={() => setIsHovered(true)}
-                  onMouseOut={() => setIsHovered(false)}
+                  onMouseOver={() => !matches && setIsHovered(true)}
+                  onMouseOut={() => !matches && setIsHovered(false)}
                 />
               )}
             </Link>
             <h2 className="text-center my-8 mb-0 font-semibold max-w-96">
-              {language == "de"
+              {language === "de"
                 ? "Instagram Klon, geschrieben in Vite/React (mit Tailwind/ShadCn) und Typescript."
                 : "Instagram Clone, written in Vite/React (with Tailwind/Shadcn) with Typescript."}
             </h2>
             <h2 className="text-center font-semibold max-w-96">
-              {" "}
-              {language == "de"
+              {language === "de"
                 ? "Backend geschrieben in Node.js (Express.js) und MongoDB."
                 : "Backend written in Node.js (Express.js) and MongoDB."}
             </h2>
@@ -110,8 +122,8 @@ const Projects = ({ language }: { language: string }) => {
                       : "/eschrottLandDark.png"
                   }
                   alt=""
-                  onMouseOver={() => setIsHovered2(true)}
-                  onMouseOut={() => setIsHovered2(false)}
+                  onMouseOver={() => !matches && setIsHovered2(true)}
+                  onMouseOut={() => !matches && setIsHovered2(false)}
                 />
               ) : (
                 <img
@@ -122,13 +134,13 @@ const Projects = ({ language }: { language: string }) => {
                       : "/eschrottLandLight.png"
                   }
                   alt=""
-                  onMouseOver={() => setIsHovered2(true)}
-                  onMouseOut={() => setIsHovered2(false)}
+                  onMouseOver={() => !matches && setIsHovered2(true)}
+                  onMouseOut={() => !matches && setIsHovered2(false)}
                 />
               )}
             </Link>
             <h2 className="text-center my-8 font-semibold max-w-80">
-              {language == "de"
+              {language === "de"
                 ? "Online Shop, geschrieben in Vite/React. (Automatischer Dark Mode)"
                 : "Online Shop, written in Vite/React. (Auto Dark Mode)"}
             </h2>
