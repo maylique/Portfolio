@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import "./animations.css";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTheme } from "@/provider/ThemeProvider";
 import {
   Tooltip,
@@ -44,6 +44,33 @@ const Projects = ({ language }: { language: string }) => {
       window.removeEventListener("resize", handleResize);
     };
   }, [theme]);
+
+  const [isVisible, setIsVisible] = useState(false);
+  const projectRef = useRef(null);
+
+  const [animationPlayed, setAnimationPlayed] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!animationPlayed && entry.isIntersecting) {
+          setIsVisible(entry.isIntersecting);
+          setAnimationPlayed(true);
+        }
+      },
+      { threshold: 0.5 } // Trigger when 50% of the element is visible
+    );
+
+    if (projectRef.current) {
+      observer.observe(projectRef.current);
+    }
+
+    return () => {
+      if (projectRef.current) {
+        observer.unobserve(projectRef.current);
+      }
+    };
+  }, [animationPlayed]);
 
   return (
     <>
@@ -100,54 +127,34 @@ const Projects = ({ language }: { language: string }) => {
         <section className="flex gap-36 my-16 max-md:flex-col">
           <div className="flex flex-col justify-between items-center">
             <div className="flex text-red-600 font-bold gap-4 mb-5">
-              {matches ? (
-                <p>
-                  {language == "de"
-                    ? "Touch für Demo Account -->"
-                    : "Touch here for demo account -->"}
-                </p>
-              ) : (
-                <p>
-                  {language == "de"
-                    ? "Hier klicken für Demo Account -->"
-                    : "Click here for demo account -->"}
-                </p>
-              )}
-              {matches ? (
-                <Popover>
-                  <PopoverTrigger className="waitJello">
-                    <span className="text-red-600 bg-red-300 rounded-full px-2">
-                      ?
-                    </span>
-                  </PopoverTrigger>
-                  <PopoverContent>
-                    <p className="text-xl max-w-96">
+              <Popover>
+                <PopoverTrigger
+                  className={isVisible ? "tracking-in-expand" : "opacity-0"}
+                >
+                  {matches ? (
+                    <p>
                       {language == "de"
-                        ? "E-Mail: demo@dev (Passwort: demo) oder Account selbst erstellen."
-                        : "E-Mail: demo@dev (Password: demo) or create your own account."}
+                        ? "Touch für Demo Account"
+                        : "Touch here for demo account"}
                     </p>
-                  </PopoverContent>
-                </Popover>
-              ) : (
-                <TooltipProvider>
-                  <Tooltip>
-                    <TooltipTrigger className="waitJello">
-                      <span className="text-red-600 bg-red-300 rounded-full px-2">
-                        ?
-                      </span>
-                    </TooltipTrigger>
-                    <TooltipContent>
-                      <p className="text-xl max-w-96">
-                        {language == "de"
-                          ? "E-Mail: demo@dev (Passwort: demo) oder Account selbst erstellen."
-                          : "E-Mail: demo@dev (Password: demo) or create your own account."}
-                      </p>
-                    </TooltipContent>
-                  </Tooltip>
-                </TooltipProvider>
-              )}
+                  ) : (
+                    <p>
+                      {language == "de"
+                        ? "Hier klicken für Demo Account"
+                        : "Click here for demo account"}
+                    </p>
+                  )}
+                </PopoverTrigger>
+                <PopoverContent>
+                  <p className="text-xl max-w-96">
+                    {language == "de"
+                      ? "E-Mail: demo@dev (Passwort: demo) oder Account selbst erstellen."
+                      : "E-Mail: demo@dev (Password: demo) or create your own account."}
+                  </p>
+                </PopoverContent>
+              </Popover>
             </div>
-            <Link to="https://toktok.abothke.dev">
+            <Link ref={projectRef} to="https://toktok.abothke.dev">
               {isDark ? (
                 <img
                   className="phone"
