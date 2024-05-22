@@ -7,6 +7,7 @@ import Projects from "@/components/Projects";
 import { useLanguage } from "@/provider/LanguageProvider";
 
 const Home = () => {
+  fetch("https://toktok-backend.abothke.dev/ping/").then((res) => res.json());
   const { language }: { language: string } = useLanguage();
   return (
     <>
