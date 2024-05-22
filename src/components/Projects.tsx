@@ -99,6 +99,54 @@ const Projects = ({ language }: { language: string }) => {
         </div>
         <section className="flex gap-36 my-16 max-md:flex-col">
           <div className="flex flex-col justify-between items-center">
+            <div className="flex text-red-600 font-bold gap-4 mb-5">
+              {matches ? (
+                <p>
+                  {language == "de"
+                    ? "Touch für Demo Account -->"
+                    : "Touch here for demo account -->"}
+                </p>
+              ) : (
+                <p>
+                  {language == "de"
+                    ? "Hier klicken für Demo Account -->"
+                    : "Click here for demo account -->"}
+                </p>
+              )}
+              {matches ? (
+                <Popover>
+                  <PopoverTrigger className="waitJello">
+                    <span className="text-red-600 bg-red-300 rounded-full px-2">
+                      ?
+                    </span>
+                  </PopoverTrigger>
+                  <PopoverContent>
+                    <p className="text-xl max-w-96">
+                      {language == "de"
+                        ? "E-Mail: demo@dev (Passwort: demo) oder Account selbst erstellen."
+                        : "E-Mail: demo@dev (Password: demo) or create your own account."}
+                    </p>
+                  </PopoverContent>
+                </Popover>
+              ) : (
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger className="waitJello">
+                      <span className="text-red-600 bg-red-300 rounded-full px-2">
+                        ?
+                      </span>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p className="text-xl max-w-96">
+                        {language == "de"
+                          ? "E-Mail: demo@dev (Passwort: demo) oder Account selbst erstellen."
+                          : "E-Mail: demo@dev (Password: demo) or create your own account."}
+                      </p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              )}
+            </div>
             <Link to="https://toktok.abothke.dev">
               {isDark ? (
                 <img
@@ -134,6 +182,7 @@ const Projects = ({ language }: { language: string }) => {
             </h2>
           </div>
           <div className="flex flex-col justify-between items-center">
+            <div className="mb-5"></div>
             <Link to="https://e-schrott.netlify.app">
               {isDark ? (
                 <img
