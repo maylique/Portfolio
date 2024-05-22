@@ -55,10 +55,10 @@ const Projects = ({ language }: { language: string }) => {
               ? "Hier sind ein paar Beispiele, an welchen Projekten ich bereits gearbeitet habe. Auf die Bilder klicken, um auf die Seite zu gelangen."
               : "Here are some examples on which projects i have worked before. Click on the pictures to get to the page."}
             <span className="text-red-600 font-bold pl-12 max-md:pl-0">
+              {language == "de" ? "NUR MOBILE ANSICHT" : "MOBILE ONLY"}{" "}
               <TooltipProvider>
                 <Tooltip>
-                  <TooltipTrigger>
-                    {language == "de" ? "NUR MOBILE ANSICHT" : "MOBILE ONLY"}{" "}
+                  <TooltipTrigger className="waitJello">
                     <span className="text-red-600 bg-red-300 rounded-full px-2">
                       ?
                     </span>
