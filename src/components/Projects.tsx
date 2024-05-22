@@ -8,6 +8,11 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+} from "@/components/ui/popover";
 
 const Projects = ({ language }: { language: string }) => {
   const [isDark, setIsDark] = useState(false);
@@ -27,17 +32,17 @@ const Projects = ({ language }: { language: string }) => {
         : false;
 
       setIsDark(systemTheme);
-
-      const handleResize = () => {
-        setMatches(matchMedia("(max-width: 768px)").matches);
-      };
-
-      window.addEventListener("resize", handleResize);
-
-      return () => {
-        window.removeEventListener("resize", handleResize);
-      };
     }
+
+    const handleResize = () => {
+      setMatches(matchMedia("(max-width: 768px)").matches);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, [theme]);
 
   return (
@@ -53,25 +58,42 @@ const Projects = ({ language }: { language: string }) => {
           <p className="text-center text-xl flex max-md:flex-col max-md:gap-4">
             {language == "de"
               ? "Hier sind ein paar Beispiele, an welchen Projekten ich bereits gearbeitet habe. Auf die Bilder klicken, um auf die Seite zu gelangen."
-              : "Here are some examples on which projects i have worked before. Click on the pictures to get to the page."}
+              : "Here are some examples on which projects I have worked before. Click on the pictures to get to the page."}
             <span className="text-red-600 font-bold pl-12 max-md:pl-0">
               {language == "de" ? "NUR MOBILE ANSICHT" : "MOBILE ONLY"}{" "}
-              <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger className="waitJello">
+              {matches ? (
+                <Popover>
+                  <PopoverTrigger className="waitJello">
                     <span className="text-red-600 bg-red-300 rounded-full px-2">
                       ?
                     </span>
-                  </TooltipTrigger>
-                  <TooltipContent>
+                  </PopoverTrigger>
+                  <PopoverContent>
                     <p className="text-xl max-w-96">
                       {language == "de"
                         ? "Diese Seiten wurden nur für mobile Endgeräte optimiert. Besuch die Seite entweder auf dem Smartphone oder nutze Rechtsklick/Untersuchen und aktiviere die Mobile Simulation."
-                        : " These projects were planned for mobile only. Visit page on phone or use inspect and activate mobile simulator."}
+                        : "These projects were planned for mobile only. Visit page on phone or use inspect and activate mobile simulator."}
                     </p>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
+                  </PopoverContent>
+                </Popover>
+              ) : (
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger className="waitJello">
+                      <span className="text-red-600 bg-red-300 rounded-full px-2">
+                        ?
+                      </span>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p className="text-xl max-w-96">
+                        {language == "de"
+                          ? "Diese Seiten wurden nur für mobile Endgeräte optimiert. Besuch die Seite entweder auf dem Smartphone oder nutze Rechtsklick/Untersuchen und aktiviere die Mobile Simulation."
+                          : "These projects were planned for mobile only. Visit page on phone or use inspect and activate mobile simulator."}
+                      </p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              )}
             </span>
           </p>
         </div>

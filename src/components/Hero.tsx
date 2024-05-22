@@ -8,6 +8,11 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+} from "@/components/ui/popover";
 import { Github, LinkedinIcon } from "lucide-react";
 import { Separator } from "./ui/separator";
 
@@ -77,9 +82,24 @@ const Hero = ({ language }: { language: string }) => {
           />
         </section>
         <section className="m-4 flex gap-10 items-center mt-10 max-md:flex-col max-md:mt-0 max-md:mb-6">
-          <>
-            <div className="flex gap-5 max-md:flex-col relative">
-              <h5 className="text-xl font-bold pr-6 max-md:pr-0">Tech Stack</h5>
+          <div className="flex gap-5 max-md:flex-col relative">
+            <h5 className="text-xl font-bold pr-6 max-md:pr-0">Tech Stack</h5>
+            {matches ? (
+              <Popover>
+                <PopoverTrigger className="text-xl absolute -top-4 right-4 max-md:-right-7 max-md:-top-3 waitJello">
+                  <span className="text-red-600 bg-red-300 rounded-full px-2">
+                    ?
+                  </span>
+                </PopoverTrigger>
+                <PopoverContent>
+                  <p className="text-xl">
+                    {language == "de"
+                      ? "Touch auf die Logos"
+                      : "Touch the logos"}
+                  </p>
+                </PopoverContent>
+              </Popover>
+            ) : (
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger className="text-xl absolute -top-4 right-4 max-md:-right-7 max-md:-top-3 waitJello">
@@ -96,155 +116,55 @@ const Hero = ({ language }: { language: string }) => {
                   </TooltipContent>
                 </Tooltip>
               </TooltipProvider>
-
-              {matches ? (
-                <Separator className="my-5 dark:bg-white" />
-              ) : (
-                <h5>|</h5>
-              )}
-            </div>
-          </>
+            )}
+            {matches ? (
+              <Separator className="my-5 dark:bg-white" />
+            ) : (
+              <h5>|</h5>
+            )}
+          </div>
           <div className="flex gap-10 max-md:grid max-md:grid-cols-3">
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger>
-                  <img
-                    className="w-16 h-16"
-                    src={isDark ? "/react.svg" : "/reactLight.svg"}
-                    alt=""
-                  />
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p className="text-2xl">React ❤️</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger>
-                  <img
-                    className="w-16 h-16"
-                    src={isDark ? "/vite.svg" : "/viteLight.svg"}
-                    alt=""
-                  />
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p className="text-2xl">Vite ❤️</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger>
-                  <img
-                    className="w-16 h-16"
-                    src={isDark ? "/express.svg" : "/expressLight.svg"}
-                    alt=""
-                  />
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p className="text-2xl">Express.js</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger>
-                  <img
-                    className="w-16 h-16"
-                    src={isDark ? "/node.svg" : "/nodeLight.svg"}
-                    alt=""
-                  />
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p className="text-2xl">Node.js</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger>
-                  <img
-                    className="w-16 h-16"
-                    src={isDark ? "/js.svg" : "/jsLight.svg"}
-                    alt=""
-                  />{" "}
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p className="text-2xl">Javascript</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger>
-                  <img
-                    className="w-16 h-16"
-                    src={isDark ? "/ts.svg" : "/tsLight.svg"}
-                    alt=""
-                  />
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p className="text-2xl">Typescript</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger>
-                  <img
-                    className="w-16 h-16"
-                    src={isDark ? "/tailwind.svg" : "/tailwindLight.svg"}
-                    alt=""
-                  />
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p className="text-2xl">Tailwind</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger>
-                  <img
-                    className="w-16 h-16"
-                    src={isDark ? "/shadcn.svg" : "/shadcnLight.svg"}
-                    alt=""
-                  />
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p className="text-2xl">ShadCN UI</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-            {/* <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger>
-                  <img
-                    className="w-16 h-16"
-                    src={isDark ? "/sass.svg" : "/sassLight.svg"}
-                    alt=""
-                  />
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p className="text-2xl">Sass/Scss</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider> */}
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger>
-                  <img
-                    className="w-16 h-16"
-                    src={isDark ? "/mongodb.svg" : "/mongodbLight.svg"}
-                    alt=""
-                  />
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p className="text-2xl">MongoDB</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
+            {[
+              { src: "react", label: "React ❤️" },
+              { src: "vite", label: "Vite ❤️" },
+              { src: "express", label: "Express.js" },
+              { src: "node", label: "Node.js" },
+              { src: "js", label: "Javascript" },
+              { src: "ts", label: "Typescript" },
+              { src: "tailwind", label: "Tailwind" },
+              { src: "shadcn", label: "ShadCN UI" },
+              { src: "mongodb", label: "MongoDB" },
+            ].map(({ src, label }) =>
+              matches ? (
+                <Popover key={src}>
+                  <PopoverTrigger>
+                    <img
+                      className="w-16 h-16"
+                      src={isDark ? `/${src}.svg` : `/${src}Light.svg`}
+                      alt={label}
+                    />
+                  </PopoverTrigger>
+                  <PopoverContent>
+                    <p className="text-2xl">{label}</p>
+                  </PopoverContent>
+                </Popover>
+              ) : (
+                <TooltipProvider key={src}>
+                  <Tooltip>
+                    <TooltipTrigger>
+                      <img
+                        className="w-16 h-16"
+                        src={isDark ? `/${src}.svg` : `/${src}Light.svg`}
+                        alt={label}
+                      />
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p className="text-2xl">{label}</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              )
+            )}
           </div>
         </section>
       </main>
