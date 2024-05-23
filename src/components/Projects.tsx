@@ -32,10 +32,20 @@ const Projects = ({ language }: { language: string }) => {
         : false;
 
       setIsDark(systemTheme);
+
+      const handleResize = () => {
+        setMatches(matchMedia("(max-width: 768px)").matches);
+      };
+
+      window.addEventListener("resize", handleResize);
+
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
     }
 
     const handleResize = () => {
-      setMatches(matchMedia("(max-width: 768px)").matches);
+      setMatchesSize(matchMedia("(max-width: 768px)").matches);
     };
 
     window.addEventListener("resize", handleResize);
@@ -50,7 +60,12 @@ const Projects = ({ language }: { language: string }) => {
 
   const [animationPlayed, setAnimationPlayed] = useState(false);
 
+  const [matchesSize, setMatchesSize] = useState(
+    matchMedia("(max-width: 768px)").matches
+  );
+
   useEffect(() => {
+    const setThreshhold = matchesSize ? 0.15 : 0.5;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (!animationPlayed && entry.isIntersecting) {
@@ -58,7 +73,7 @@ const Projects = ({ language }: { language: string }) => {
           setAnimationPlayed(true);
         }
       },
-      { threshold: 0.5 } // Trigger when 50% of the element is visible
+      { threshold: setThreshhold } // Trigger when 50% of the element is visible
     );
 
     if (projectRef.current) {
