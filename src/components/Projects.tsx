@@ -87,6 +87,8 @@ const Projects = ({ language }: { language: string }) => {
     };
   }, [animationPlayed]);
 
+  const [clickedOrHovered, setClickedOrHovered] = useState(false);
+
   return (
     <>
       <section
@@ -101,11 +103,26 @@ const Projects = ({ language }: { language: string }) => {
             {language == "de"
               ? "Hier sind ein paar Beispiele, an welchen Projekten ich bereits gearbeitet habe. Auf die Bilder klicken, um auf die Seite zu gelangen."
               : "Here are some examples on which projects I have worked before. Click on the pictures to get to the page."}
-            <span className="text-red-600 font-bold pl-12 max-md:pl-0">
+            <span className="text-red-600 font-bold pl-12 max-md:pl-0 max-md:mt-6 relative">
               {language == "de" ? "NUR MOBILE ANSICHT" : "MOBILE ONLY"}{" "}
               {matches ? (
                 <Popover>
-                  <PopoverTrigger className="waitJello">
+                  <PopoverTrigger
+                    onClick={() => {
+                      if (clickedOrHovered === true) {
+                        setTimeout(() => {
+                          setClickedOrHovered(!clickedOrHovered);
+                        }, 10000);
+                      } else {
+                        setClickedOrHovered(!clickedOrHovered);
+                      }
+                    }}
+                    className={
+                      clickedOrHovered
+                        ? "absolute -top-4 right-16"
+                        : "absolute -top-4 right-16 waitJello"
+                    }
+                  >
                     <span className="text-red-600 bg-red-300 rounded-full px-2">
                       ?
                     </span>
@@ -121,7 +138,21 @@ const Projects = ({ language }: { language: string }) => {
               ) : (
                 <TooltipProvider>
                   <Tooltip>
-                    <TooltipTrigger className="waitJello">
+                    <TooltipTrigger
+                      onMouseOver={() => {
+                        setClickedOrHovered(true);
+                      }}
+                      onMouseOut={() => {
+                        setTimeout(() => {
+                          setClickedOrHovered(false);
+                        }, 10000);
+                      }}
+                      className={
+                        clickedOrHovered
+                          ? "absolute -top-3 -right-8"
+                          : "absolute -top-3 -right-8 waitJello"
+                      }
+                    >
                       <span className="text-red-600 bg-red-300 rounded-full px-2">
                         ?
                       </span>

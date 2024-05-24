@@ -21,3 +21,7 @@ html {
 *.dark {
   scrollbar-color: #121212 #242424;
 }
+
+.fontSize1dot5xl {
+  font-size: 1.45rem;
+}

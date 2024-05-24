@@ -24,6 +24,7 @@ const Contact = ({ language }: { language: string }) => {
       }
     };
   }, []);
+
   return (
     <>
       <section
@@ -37,13 +38,13 @@ const Contact = ({ language }: { language: string }) => {
           </h2>
           <p className="text-center relative">
             {language == "de" ? "Schreib mir gerne!" : "Hit me up!"}
-            <div
+            <span
               className={`${
                 isVisible ? "waitAnimate" : ""
               } absolute top-0 -right-9`}
             >
               👇
-            </div>
+            </span>
           </p>
         </div>
         <section className="flex gap-28 mt-5 max-md:flex-col">

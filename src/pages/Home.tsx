@@ -5,9 +5,16 @@ import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
 import Projects from "@/components/Projects";
 import { useLanguage } from "@/provider/LanguageProvider";
+import { useEffect } from "react";
 
 const Home = () => {
-  fetch("https://toktok-backend.abothke.dev/ping/").then((res) => res.json());
+  const sendPing = () => {
+    navigator.sendBeacon("https://toktok-backend.abothke.dev/ping/");
+  };
+
+  useEffect(() => {
+    sendPing();
+  }, []);
   const { language }: { language: string } = useLanguage();
   return (
     <>

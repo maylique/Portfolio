@@ -3,7 +3,7 @@ const About = ({ language }: { language: string }) => {
     <>
       <section
         id="about"
-        className="min-h-96 w-full flex flex-col items-center justify-center bg-gray-200 dark:bg-slate-900 max-md:px-10 max-md:text-center max-md:py-10"
+        className="py-24 min-h-96 w-full flex flex-col items-center justify-center bg-gray-200 dark:bg-slate-900 max-md:px-10 max-md:text-center max-md:py-10"
       >
         <h3 className="font-bold text-5xl mb-5 text-red-800">
           {language == "de" ? "Über Mich" : "About me"}

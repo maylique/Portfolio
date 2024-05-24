@@ -44,6 +44,9 @@ const Hero = ({ language }: { language: string }) => {
     };
   }, [theme]);
 
+  const [clickedOrHovered, setClickedOrHovered] = useState(false);
+  console.log(clickedOrHovered);
+
   return (
     <>
       <main
@@ -58,12 +61,12 @@ const Hero = ({ language }: { language: string }) => {
                 <span>👋</span>
               </div>
             </h1>
-            <h3 className="text-2xl m-4">
+            <h3 className="lg:text-3xl m-4 fontSize1dot5xl">
               {language == "de" ? "Moin, Ich bin " : "Hi there, I'm "}
               <span className="text-red-500">Jannik</span>. <br />
               {language == "de"
                 ? "Ich bin ein Full Stack Entwickler mit einer Leidenschaft für Webentwicklung und komme aus Hannover."
-                : "I am a full stack developer with a passion for web development based in Hannover, Germany."}{" "}
+                : "I'm a full stack developer with a passion for web development based in Hannover, Germany."}
               🚩
             </h3>
             <div className="flex m-4 mt-10 gap-5 max-md:justify-center">
@@ -86,7 +89,20 @@ const Hero = ({ language }: { language: string }) => {
             <h5 className="text-xl font-bold pr-6 max-md:pr-0">Tech Stack</h5>
             {matches ? (
               <Popover>
-                <PopoverTrigger className="text-xl absolute -top-4 right-4 max-md:-right-7 max-md:-top-3 waitJello">
+                <PopoverTrigger
+                  onClick={() => {
+                    if (clickedOrHovered === true) {
+                      setTimeout(() => {
+                        setClickedOrHovered(!clickedOrHovered);
+                      }, 10000);
+                    } else {
+                      setClickedOrHovered(!clickedOrHovered);
+                    }
+                  }}
+                  className={`text-xl absolute -top-4 right-4 max-md:-right-7 max-md:-top-3 ${
+                    clickedOrHovered ? "" : "waitJello"
+                  }`}
+                >
                   <span className="text-red-600 bg-red-300 rounded-full px-2">
                     ?
                   </span>
@@ -102,7 +118,19 @@ const Hero = ({ language }: { language: string }) => {
             ) : (
               <TooltipProvider>
                 <Tooltip>
-                  <TooltipTrigger className="text-xl absolute -top-4 right-4 max-md:-right-7 max-md:-top-3 waitJello">
+                  <TooltipTrigger
+                    onMouseOver={() => {
+                      setClickedOrHovered(true);
+                    }}
+                    onMouseOut={() => {
+                      setTimeout(() => {
+                        setClickedOrHovered(false);
+                      }, 10000);
+                    }}
+                    className={`text-xl absolute -top-4 right-4 max-md:-right-7 max-md:-top-3 ${
+                      clickedOrHovered ? "" : "waitJello"
+                    }`}
+                  >
                     <span className="text-red-600 bg-red-300 rounded-full px-2">
                       ?
                     </span>
