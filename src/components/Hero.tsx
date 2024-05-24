@@ -45,7 +45,6 @@ const Hero = ({ language }: { language: string }) => {
   }, [theme]);
 
   const [clickedOrHovered, setClickedOrHovered] = useState(false);
-  console.log(clickedOrHovered);
 
   return (
     <>
