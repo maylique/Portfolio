@@ -42,23 +42,26 @@ export function LanguageToggle() {
 
   useEffect(() => {
     if (navigator.language.startsWith("de") && lang === "en") {
-      toast({
-        duration: 5000,
-        description:
-          "Sie sehen die Seite in Englisch, falls sie zu deutsch wechseln möchten klicken Sie bitte auf die Schaltfläche.",
-        action: (
-          <ToastAction
-            onClick={() => {
-              handleClick("de");
-            }}
-            altText="Try again"
-          >
-            Zu deutsch wechseln
-          </ToastAction>
-        ),
-      });
+      console.log("nur kein toast");
+      setTimeout(() => {
+        toast({
+          duration: 5000,
+          description:
+            "Sie sehen die Seite in Englisch, falls sie zu deutsch wechseln möchten klicken Sie bitte auf die Schaltfläche.",
+          action: (
+            <ToastAction
+              onClick={() => {
+                handleClick("de");
+              }}
+              altText="Try again"
+            >
+              Zu deutsch wechseln
+            </ToastAction>
+          ),
+        });
+      }, 1000);
     }
-  }, []);
+  }, [lang]);
 
   return (
     <DropdownMenu>
