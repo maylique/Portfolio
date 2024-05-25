@@ -8,6 +8,7 @@ import {
 import { useLanguage } from "@/provider/LanguageProvider";
 import { useToast } from "./ui/use-toast";
 import { ToastAction } from "@/components/ui/toast";
+import { useEffect } from "react";
 
 export function LanguageToggle() {
   const { language, setLanguage } = useLanguage();
@@ -35,6 +36,25 @@ export function LanguageToggle() {
 
     setLanguage(newLang as "de" | "en");
   };
+
+  useEffect(() => {
+    if (navigator.language.startsWith("de") && lang === "en") {
+      toast({
+        description:
+          "Sie sehen die Seite in Englisch, falls sie zu deutsch wechseln möchten klicken Sie bitte auf die Schaltfläche.",
+        action: (
+          <ToastAction
+            onClick={() => {
+              handleClick("de");
+            }}
+            altText="Try again"
+          >
+            Zu deutsch wechseln
+          </ToastAction>
+        ),
+      });
+    }
+  }, []);
 
   return (
     <DropdownMenu>
