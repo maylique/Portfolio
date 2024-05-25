@@ -37,9 +37,13 @@ export function LanguageToggle() {
     setLanguage(newLang as "de" | "en");
   };
 
+  console.log(lang);
+  console.log(navigator.language);
+
   useEffect(() => {
     if (navigator.language.startsWith("de") && lang === "en") {
       toast({
+        duration: 5000,
         description:
           "Sie sehen die Seite in Englisch, falls sie zu deutsch wechseln möchten klicken Sie bitte auf die Schaltfläche.",
         action: (

@@ -31,6 +31,7 @@ export function LanguageProvider({
   );
 
   useEffect(() => {
+    localStorage.setItem(storageKey, "en");
     const root = window.document.documentElement;
 
     root.classList.remove("de", "en");
