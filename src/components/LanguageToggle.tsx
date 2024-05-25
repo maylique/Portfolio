@@ -39,7 +39,6 @@ export function LanguageToggle() {
 
   useEffect(() => {
     if (navigator.language.startsWith("de") && lang === "en") {
-      console.log("nur kein toast");
       setTimeout(() => {
         toast({
           className:

@@ -19,6 +19,7 @@ const Footer = ({ language }: { language: string }) => {
           </Link>
         </div>
       </footer>
+
     </>
   );
 };
