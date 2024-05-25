@@ -123,12 +123,12 @@ const Projects = ({ language }: { language: string }) => {
                         : "absolute -top-4 right-16 waitJello"
                     }
                   >
-                    <span className="text-red-600 bg-red-300 rounded-full px-2">
+                    <span className="text-red-600 bg-red-300 rounded-full px-2 relative">
                       ?
                     </span>
                   </PopoverTrigger>
-                  <PopoverContent>
-                    <p className="text-xl max-w-96">
+                  <PopoverContent className="absolute -right-20 -top-36">
+                    <p className="text-xl w-72">
                       {language == "de"
                         ? "Diese Seiten wurden nur für mobile Endgeräte optimiert. Besuch die Seite entweder auf dem Smartphone oder nutze Rechtsklick/Untersuchen und aktiviere die Mobile Simulation."
                         : "These projects were planned for mobile only. Visit page on phone or use inspect and activate mobile simulator."}
