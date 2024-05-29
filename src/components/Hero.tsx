@@ -78,9 +78,9 @@ const Hero = ({ language }: { language: string }) => {
             </div>
           </article>
           <img
-            className="heroImg border-gray-600 border-2 w-96 h-96 dark:border-gray-400 max-md:w-64 max-md:h-64"
-            src="/c80b5a91919996f8ed0aabcf912c80bd.jpg"
-            alt="Profile picture"
+            className="heroImg border-gray-600 border-2 w-96 h-96 dark:border-gray-400 max-md:w-64 max-md:h-64 object-cover"
+            src="/code.jpg"
+            alt="code picture"
           />
         </section>
         <section className="m-4 flex gap-10 items-center mt-10 max-md:flex-col max-md:mt-0 max-md:mb-6">
