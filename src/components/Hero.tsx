@@ -61,7 +61,7 @@ const Hero = ({ language }: { language: string }) => {
               </div>
             </h1>
             <h3 className="lg:text-3xl m-4 fontSize1dot5xl">
-              {language == "de" ? "Moin, Ich bin " : "Hi there, I'm "}
+              {language == "de" ? "Moin, ich bin " : "Hi there, I'm "}
               <span className="text-red-500">Jannik</span>. <br />
               {language == "de"
                 ? "Ich bin ein Full Stack Entwickler mit einer Leidenschaft für Webentwicklung und komme aus Hannover."
