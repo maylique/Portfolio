@@ -249,7 +249,7 @@ const Projects = ({ language }: { language: string }) => {
             </h2>
           </div>
           <div className="flex flex-col justify-between items-center">
-            <div className="mb-7"></div>
+            <div className="mb-12"></div>
             <Link to="https://e-schrott.netlify.app">
               {isDark ? (
                 <img
