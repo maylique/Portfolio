@@ -178,17 +178,31 @@ const Projects = ({ language }: { language: string }) => {
                   className={isVisible ? "tracking-in-expand" : "opacity-0"}
                 >
                   {matches ? (
-                    <p>
-                      {language == "de"
-                        ? "Touch für Demo Account <br> (Backend braucht ca. 30 Sekunden zum starten)"
-                        : "Touch here for demo account <br> (Backend needs about 30 seconds to start)"}
-                    </p>
+                    <>
+                      <p>
+                        {language == "de"
+                          ? "Touch für Demo Account"
+                          : "Touch here for demo account"}
+                      </p>
+                      <p>
+                        {language == "de"
+                          ? "(Backend braucht ca. 30 Sekunden zum starten)"
+                          : "(Backend needs about 30 seconds to start)"}
+                      </p>
+                    </>
                   ) : (
-                    <p>
-                      {language == "de"
-                        ? "Hier klicken für Demo Account <br> (Backend braucht ca. 30 Sekunden zum starten)"
-                        : "Click here for demo account <br> (Backend needs about 30 seconds to start)"}
-                    </p>
+                    <>
+                      <p>
+                        {language == "de"
+                          ? "Hier klicken für Demo Account"
+                          : "Click here for demo account"}
+                      </p>
+                      <p>
+                        {language == "de"
+                          ? "(Backend braucht ca. 30 Sekunden zum starten)"
+                          : "(Backend needs about 30 seconds to start)"}
+                      </p>
+                    </>
                   )}
                 </PopoverTrigger>
                 <PopoverContent>
