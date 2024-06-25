@@ -180,14 +180,14 @@ const Projects = ({ language }: { language: string }) => {
                   {matches ? (
                     <p>
                       {language == "de"
-                        ? "Touch für Demo Account"
-                        : "Touch here for demo account"}
+                        ? "Touch für Demo Account (Backend braucht ca. 30 Sekunden zum starten)"
+                        : "Touch here for demo account (Backend needs about 30 seconds to start)"}
                     </p>
                   ) : (
                     <p>
                       {language == "de"
-                        ? "Hier klicken für Demo Account"
-                        : "Click here for demo account"}
+                        ? "Hier klicken für Demo Account (Backend braucht ca. 30 Sekunden zum starten)"
+                        : "Click here for demo account (Backend needs about 30 seconds to start)"}
                     </p>
                   )}
                 </PopoverTrigger>
