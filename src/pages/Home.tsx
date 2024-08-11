@@ -20,12 +20,22 @@ const Home = () => {
   }, []);
 
   const { language }: { language: string } = useLanguage();
-  const { theme }: { theme: string } = useTheme();
+  let { theme }: { theme: string } = useTheme();
 
   const [vantaEffect, setVantaEffect] = useState<any>(null);
   const vantaRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
+    if (theme === "system") {
+      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
+        .matches
+        ? "dark"
+        : "light";
+
+      theme = systemTheme;
+      return;
+    }
+
     const baseColor = theme === "light" ? 0xffffff : 0x0;
     const highlightColor = theme === "light" ? 0x606061 : 0x1e2d75;
     const zoom = theme === "light" ? 0.35 : 0.8;
