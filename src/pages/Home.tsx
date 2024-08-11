@@ -20,8 +20,11 @@ const Home = () => {
   }, []);
 
   const { language }: { language: string } = useLanguage();
-  let { theme }: { theme: string } = useTheme();
-
+  const { theme: currentTheme }: { theme: string } = useTheme();
+  const [theme, setTheme] = useState<string>(currentTheme);
+  useEffect(() => {
+    setTheme(currentTheme);
+  }, [currentTheme]);
   const [vantaEffect, setVantaEffect] = useState<any>(null);
   const vantaRef = useRef<HTMLDivElement | null>(null);
 
@@ -32,8 +35,7 @@ const Home = () => {
         ? "dark"
         : "light";
 
-      theme = systemTheme;
-      return;
+      setTheme(systemTheme);
     }
 
     const baseColor = theme === "light" ? 0xffffff : 0x0;

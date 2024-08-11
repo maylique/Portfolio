@@ -119,8 +119,8 @@ const Projects = ({ language }: { language: string }) => {
                     }}
                     className={
                       clickedOrHovered
-                        ? "absolute -top-4 right-16"
-                        : "absolute -top-4 right-16 waitJello"
+                        ? "absolute -top-4 right-10"
+                        : "absolute -top-4 right-10 waitJello"
                     }
                   >
                     <span className="text-red-600 bg-red-300 rounded-full px-2 relative">
