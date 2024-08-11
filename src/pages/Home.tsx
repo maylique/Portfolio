@@ -38,8 +38,10 @@ const Home = () => {
       setTheme(systemTheme);
     }
 
-    const baseColor = theme === "light" ? 0xffffff : 0x0;
-    const highlightColor = theme === "light" ? 0x606061 : 0x1e2d75;
+    const baseColor = theme === "light" ? 0xa9a9a9 : 0x0;
+    const midtoneColor = theme === "light" ? 0xcf8484 : 0x0;
+    const lowlightColor = theme === "light" ? 0x60607f : 0x5c002f;
+    const highlightColor = theme === "light" ? 0xacac8c : 0x1e2d75;
     const zoom = theme === "light" ? 0.35 : 0.8;
 
     if (vantaEffect) {
@@ -56,8 +58,8 @@ const Home = () => {
         minHeight: 200.0,
         minWidth: 200.0,
         highlightColor: highlightColor,
-        midtoneColor: 0x0,
-        lowlightColor: 0x0,
+        midtoneColor: midtoneColor,
+        lowlightColor: lowlightColor,
         baseColor: baseColor,
         blurFactor: 0.9,
         speed: 0.8,
