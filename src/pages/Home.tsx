@@ -5,7 +5,10 @@ import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
 import Projects from "@/components/Projects";
 import { useLanguage } from "@/provider/LanguageProvider";
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
+import FOG from "vanta/dist/vanta.fog.min";
+import * as THREE from "three";
+import { useTheme } from "@/provider/ThemeProvider";
 
 const Home = () => {
   const sendPing = () => {
@@ -15,15 +18,57 @@ const Home = () => {
   useEffect(() => {
     sendPing();
   }, []);
+
   const { language }: { language: string } = useLanguage();
+  const { theme }: { theme: string } = useTheme();
+
+  const [vantaEffect, setVantaEffect] = useState<any>(null);
+  const vantaRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const baseColor = theme === "light" ? 0xffffff : 0x0;
+    const highlightColor = theme === "light" ? 0x606061 : 0x1e2d75;
+    const zoom = theme === "light" ? 0.35 : 0.8;
+
+    if (vantaEffect) {
+      vantaEffect.destroy();
+    }
+
+    if (vantaRef.current) {
+      const effect = FOG({
+        el: vantaRef.current,
+        THREE,
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.0,
+        minWidth: 200.0,
+        highlightColor: highlightColor,
+        midtoneColor: 0x0,
+        lowlightColor: 0x0,
+        baseColor: baseColor,
+        blurFactor: 0.9,
+        speed: 0.8,
+        zoom: zoom,
+      });
+      setVantaEffect(effect);
+    }
+
+    return () => {
+      if (vantaEffect) vantaEffect.destroy();
+    };
+  }, [theme]); // theme als Abhängigkeit hinzugefügt
+
   return (
     <>
-      <Navbar language={language} />
-      <Hero language={language} />
-      <About language={language} />
-      <Projects language={language} />
-      <Contact language={language} />
-      <Footer language={language} />
+      <div className="container" ref={vantaRef}>
+        <Navbar language={language} />
+        <Hero language={language} />
+        <About language={language} />
+        <Projects language={language} />
+        <Contact language={language} />
+        <Footer language={language} />
+      </div>
     </>
   );
 };

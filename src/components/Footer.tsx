@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Footer = ({ language }: { language: string }) => {
   return (
     <>
-      <footer className="flex justify-evenly font-bold text-2xl py-12 w-full max-md:flex-col-reverse text-center items-center gap-10 max-md:text-xl">
+      <footer className="flex justify-evenly font-bold text-2xl py-12 max-md:flex-col-reverse text-center items-center gap-10 max-md:text-xl">
         <h6>
           {language == "de"
             ? "Urheberrecht. ® Alle Rechte vorbehalten."
@@ -19,7 +19,6 @@ const Footer = ({ language }: { language: string }) => {
           </Link>
         </div>
       </footer>
-
     </>
   );
 };

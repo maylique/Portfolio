@@ -30,7 +30,7 @@ const Contact = ({ language }: { language: string }) => {
       <section
         ref={contactRef}
         id="contact"
-        className="py-24 w-full text-2xl font-bold flex flex-col items-center justify-center bg-gray-200 dark:bg-slate-900 "
+        className="py-24 px-4 text-2xl font-bold flex flex-col items-center justify-center bg-gray-100 dark:bg-slate-900 rounded-3xl minWidthMargin dark:bg-opacity-80 backdrop-blur-xl bg-opacity-80 dark:backdrop-blur-xl max-md:mx-0"
       >
         <div className="mb-10">
           <h2 className="text-blue-600 text-3xl mb-6 text-center">

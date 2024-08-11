@@ -25,3 +25,14 @@ html {
 .fontSize1dot5xl {
   font-size: 1.45rem;
 }
+
+.container {
+  width: 100vw;
+  min-height: 300dvh;
+}
+
+.minWidthMargin {
+  margin-left: 30%;
+  margin-right: 30%;
+  min-width: fit-content;
+}

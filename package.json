@@ -16,6 +16,7 @@
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-toast": "^1.1.5",
     "@radix-ui/react-tooltip": "^1.0.7",
+    "@types/three": "^0.167.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "lucide-react": "^0.378.0",
@@ -23,7 +24,9 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.23.1",
     "tailwind-merge": "^2.3.0",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "three": "^0.134.0",
+    "vanta": "^0.5.24"
   },
   "devDependencies": {
     "@types/node": "^20.12.12",
