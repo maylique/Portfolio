@@ -29,6 +29,8 @@ html {
 .container {
   width: 100vw;
   min-height: 300dvh;
+  margin: 0;
+  padding: 0;
 }
 
 .minWidthMargin {
