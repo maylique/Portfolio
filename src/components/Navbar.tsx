@@ -4,7 +4,7 @@ import { ModeToggle } from "./mode-toggle";
 const Navbar = ({ language }: { language: string }) => {
   return (
     <>
-      <header className=" z-10 flex items-center justify-between bg-slate-200 dark:bg-slate-700 p-4 px-8 font-bold text-xl fixed bg-opacity-40 dark:bg-opacity-40 backdrop-blur-xl max-md:static m-12 mt-2 rounded-full w-11/12 max-md:m-auto">
+      <header className=" z-10 flex items-center justify-between bg-slate-200 dark:bg-slate-700 p-4 px-8 font-bold text-xl fixed bg-opacity-40 dark:bg-opacity-40 backdrop-blur-xl max-md:static mx-12 mt-2 rounded-full w-11/12 max-md:mx-auto">
         <h2 className="uppercase">Guski.dev</h2>
         <section className="flex gap-2 m-2 items-center">
           <nav className="flex gap-4 mr-3 max-md:hidden">
