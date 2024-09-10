@@ -7,7 +7,7 @@ import { LanguageProvider } from "./provider/LanguageProvider";
 function App() {
   return (
     <>
-      <ThemeProvider defaultTheme="system">
+      <ThemeProvider defaultTheme="dark">
         <LanguageProvider defaultLanguage="en">
           <Routes>
             <Route path="/" element={<Home />} />

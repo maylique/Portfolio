@@ -116,7 +116,7 @@ const Hero = ({ language }: { language: string }) => {
               </Popover>
             ) : (
               <TooltipProvider>
-                <Tooltip>
+                <Tooltip delayDuration={0}>
                   <TooltipTrigger
                     onMouseOver={() => {
                       setClickedOrHovered(true);

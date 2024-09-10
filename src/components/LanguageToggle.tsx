@@ -42,10 +42,9 @@ export function LanguageToggle() {
       setTimeout(() => {
         toast({
           className:
-            "max-md:flex max-md:justify-center max-md:items-center max-md:flex-col max-md:gap-2 max-md:px-4 max-md:py-2 max-md:text-center max-md:top-16",
+            "max-md:flex max-md:justify-center max-md:items-center max-md:flex-col max-md:gap-2 max-md:px-4 max-md:py-2 max-md:text-center max-md:top-96",
           duration: 6500,
-          description:
-            "Es wurde erkannt dass ihre Systemsprache deutsch ist. Falls sie die Seite auf deutsch sehen möchten, klicken sie auf den Button.",
+          description: "Ihr System ist auf Deutsch, möchten Sie wechseln?",
           action: (
             <ToastAction
               onClick={() => {
