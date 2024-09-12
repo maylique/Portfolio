@@ -31,8 +31,17 @@ html {
   min-height: 300dvh;
 }
 
+.container2 {
+  width: 100vw;
+  min-height: 200dvh;
+}
+
 .minWidthMargin {
   margin-left: 30%;
   margin-right: 30%;
   min-width: fit-content;
+}
+
+iframe {
+  border-radius: 4rem;
 }

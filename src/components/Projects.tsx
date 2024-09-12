@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./animations.css";
 import { useEffect, useRef, useState } from "react";
 import { useTheme } from "@/provider/ThemeProvider";
@@ -13,6 +13,7 @@ import {
   PopoverTrigger,
   PopoverContent,
 } from "@/components/ui/popover";
+import { Button } from "./ui/button";
 
 const Projects = ({ language }: { language: string }) => {
   const [isDark, setIsDark] = useState(false);
@@ -22,6 +23,12 @@ const Projects = ({ language }: { language: string }) => {
   const [matches, setMatches] = useState(
     matchMedia("(max-width: 768px)").matches
   );
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // Überprüfe, ob die aktuelle URL "/projects" enthält
+  const isProjectsPage = location.pathname.includes("/projects");
+  const shouldShowButton = !isProjectsPage;
 
   useEffect(() => {
     setIsDark(theme === "dark" ? true : false);
@@ -93,7 +100,7 @@ const Projects = ({ language }: { language: string }) => {
     <>
       <section
         id="projects"
-        className="flex flex-col items-center py-12 max-md:px-12 max-md:text-center"
+        className="flex flex-col items-center py-20 max-md:px-12 max-md:text-center"
       >
         <div>
           <h2 className="text-center font-bold text-5xl my-12">
@@ -284,6 +291,16 @@ const Projects = ({ language }: { language: string }) => {
             </h2>
           </div>
         </section>
+        {shouldShowButton && (
+          <Button
+            onClick={() => navigate("/projects")}
+            className="dark:bg-slate-800 dark:text-white p-8 font-bold text-xl "
+          >
+            {language === "de"
+              ? "Klick hier für mehr Informationen"
+              : "Click here for more info"}
+          </Button>
+        )}
       </section>
     </>
   );
