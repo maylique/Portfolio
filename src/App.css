@@ -16,10 +16,11 @@ nav a:hover {
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 *.dark {
-  scrollbar-color: #121212 #242424;
+  scrollbar-color: #565656 #242424;
 }
 
 .fontSize1dot5xl {
