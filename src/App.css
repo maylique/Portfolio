@@ -28,12 +28,12 @@ html {
 
 .container {
   width: 100vw;
-  min-height: 300dvh;
+  min-height: 315dvh;
 }
 
 .container2 {
   width: 100vw;
-  min-height: 200dvh;
+  min-height: 225dvh;
 }
 
 .minWidthMargin {

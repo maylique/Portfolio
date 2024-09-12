@@ -38,7 +38,18 @@ export function LanguageToggle() {
   };
 
   useEffect(() => {
-    if (navigator.language.startsWith("de") && lang === "en") {
+    // Lese den Zeitpunkt der letzten Ausführung aus dem localStorage
+    const storedLastExecutionTime = localStorage.getItem("lastExecutionTime");
+    const currentTime = Date.now();
+    const twoHoursInMillis = 2 * 60 * 60 * 1000; // 2 Stunden in Millisekunden
+
+    // Überprüfe, ob die letzte Ausführung mehr als 2 Stunden her ist
+    if (
+      navigator.language.startsWith("de") &&
+      lang === "en" &&
+      (!storedLastExecutionTime ||
+        currentTime - parseInt(storedLastExecutionTime) >= twoHoursInMillis)
+    ) {
       setTimeout(() => {
         toast({
           className:
@@ -57,8 +68,11 @@ export function LanguageToggle() {
           ),
         });
       }, 800);
+
+      // Aktualisiere den Zeitpunkt der letzten Ausführung im localStorage
+      localStorage.setItem("lastExecutionTime", currentTime.toString());
     }
-  }, [lang]);
+  }, [lang, handleClick]);
 
   return (
     <DropdownMenu>
