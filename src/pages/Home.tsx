@@ -75,8 +75,8 @@ const Home = () => {
 
   return (
     <>
+      <Navbar language={language} />
       <div className="container" ref={vantaRef}>
-        <Navbar language={language} />
         <Hero language={language} />
         <About language={language} />
         <Projects language={language} />

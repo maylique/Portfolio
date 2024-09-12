@@ -7,7 +7,7 @@ const Navbar = ({ language }: { language: string }) => {
   const isProjectsPage = location.pathname.includes("/projects");
   return (
     <>
-      <header className=" z-10 flex items-center justify-between bg-slate-200 dark:bg-slate-700 p-4 px-8 font-bold text-xl fixed bg-opacity-40 dark:bg-opacity-40 backdrop-blur-xl max-md:static mx-12 mt-2 rounded-full w-11/12 max-md:mx-auto">
+      <header className="w-11/12 z-10 flex items-center justify-between bg-slate-200 dark:bg-slate-700 p-4 px-8 font-bold text-xl fixed bg-opacity-40 dark:bg-opacity-40 backdrop-blur-xl max-md:static mx-12 mt-2 rounded-full max-md:mx-auto">
         <a href="/">
           <h2 className="uppercase hover:text-red-700">Guski.dev</h2>
         </a>

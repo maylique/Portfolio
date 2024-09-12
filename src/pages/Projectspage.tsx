@@ -67,7 +67,7 @@ const Projectspage = () => {
       setVantaEffect(effect);
     }
 
-    window.scrollTo(0, 0);
+    // window.scrollTo(0, 0);
 
     return () => {
       if (vantaEffect) vantaEffect.destroy();
@@ -75,41 +75,43 @@ const Projectspage = () => {
   }, [theme]); // theme als Abhängigkeit hinzugefügt
   return (
     <>
+      <Navbar language={language} />
       <div className="container2" ref={vantaRef}>
-        <Navbar language={language} />
         <Projects language={language} />
-        <div className="w-full flex justify-center items-center flex-col gap-10 mt-20 mb-20 relative">
-          <section className="flex gap-56">
-            <Button className="dark: bg-slate-800 dark:text-white text-xl p-8 hover:bg-slate-500">
-              <Link to="https://github.com/maylique/TokTok">
-                Cringestagram Codebase
-              </Link>
-            </Button>
-            <Button className="dark: bg-slate-800 dark:text-white text-xl p-8 hover:bg-slate-500">
-              <Link to="https://github.com/abothke/e-shop-react">
-                eSchrott Codebase
-              </Link>
-            </Button>
-          </section>
+        <div className="flex justify-center items-center gap-10 mt-20 mb-20 relative">
           <h2 className="font-bold text-3xl absolute -top-36">
             Code & Demovideos
           </h2>
-          <section className="w-full flex items-center justify-center gap-20">
-            <iframe
-              width="390"
-              height="798"
-              src="https://www.youtube.com/embed/ry9bcTnnzLY"
-              title="Cringestagram Demovideo"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            ></iframe>
-            <iframe
-              width="400"
-              height="798"
-              src="https://www.youtube.com/embed/EcIP_aasTiY"
-              title="eSchrott Demovideo"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            ></iframe>
-          </section>
+          <article className="flex gap-56 items-center justify-center">
+            <section className=" flex gap-14 flex-col place-items-center">
+              <Button className="dark: bg-slate-800 dark:text-white text-xl p-8 hover:bg-slate-500">
+                <Link to="https://github.com/maylique/TokTok">
+                  Cringestagram Codebase
+                </Link>
+              </Button>
+              <iframe
+                width="390"
+                height="798"
+                src="https://www.youtube.com/embed/ry9bcTnnzLY"
+                title="Cringestagram Demovideo"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              ></iframe>
+            </section>
+            <section className="w-full flex items-center justify-center gap-14 flex-col place-items-center">
+              <Button className="dark: bg-slate-800 dark:text-white text-xl p-8 hover:bg-slate-500">
+                <Link to="https://github.com/abothke/e-shop-react">
+                  eSchrott Codebase
+                </Link>
+              </Button>
+              <iframe
+                width="400"
+                height="798"
+                src="https://www.youtube.com/embed/EcIP_aasTiY"
+                title="eSchrott Demovideo"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              ></iframe>
+            </section>
+          </article>
         </div>
         <Footer language={language} />
       </div>
