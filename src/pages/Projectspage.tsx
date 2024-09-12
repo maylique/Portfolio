@@ -100,20 +100,14 @@ const Projectspage = () => {
               height="798"
               src="https://www.youtube.com/embed/ry9bcTnnzLY"
               title="Cringestagram Demovideo"
-              frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allowfullscreen
             ></iframe>
             <iframe
               width="400"
               height="798"
               src="https://www.youtube.com/embed/EcIP_aasTiY"
               title="eSchrott Demovideo"
-              frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allowfullscreen
             ></iframe>
           </section>
         </div>
