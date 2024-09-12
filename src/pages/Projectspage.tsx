@@ -7,7 +7,7 @@ import * as THREE from "three";
 import { useTheme } from "@/provider/ThemeProvider";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Projectspage = () => {
   const sendPing = () => {
@@ -26,7 +26,6 @@ const Projectspage = () => {
   }, [currentTheme]);
   const [vantaEffect, setVantaEffect] = useState<any>(null);
   const vantaRef = useRef<HTMLDivElement | null>(null);
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (theme === "system") {
