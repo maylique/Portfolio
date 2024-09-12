@@ -67,7 +67,7 @@ const Projectspage = () => {
       setVantaEffect(effect);
     }
 
-    // window.scrollTo(0, 0);
+    window.scrollTo(0, 0);
 
     return () => {
       if (vantaEffect) vantaEffect.destroy();
