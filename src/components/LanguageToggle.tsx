@@ -67,7 +67,7 @@ export function LanguageToggle() {
             </ToastAction>
           ),
         });
-      }, 800);
+      }, 1000);
 
       // Aktualisiere den Zeitpunkt der letzten Ausführung im localStorage
       localStorage.setItem("lastExecutionTime", currentTime.toString());
