@@ -27,49 +27,51 @@ const Contact = ({ language }: { language: string }) => {
 
   return (
     <>
-      <section
-        ref={contactRef}
-        id="contact"
-        className="py-24 px-4 text-2xl font-bold flex flex-col items-center justify-center bg-gray-100 dark:bg-slate-900 rounded-3xl minWidthMargin dark:bg-opacity-80 backdrop-blur-xl bg-opacity-80 dark:backdrop-blur-xl max-md:mx-0"
-      >
-        <div className="mb-10">
-          <h2 className="text-blue-600 text-3xl mb-6 text-center">
-            {language == "de" ? "Kontakt" : "Contact"}
-          </h2>
-          <p className="text-center relative">
-            {language == "de" ? "Schreib mir gerne!" : "Hit me up!"}
-            <span
-              className={`${
-                isVisible ? "waitAnimate" : ""
-              } absolute top-0 -right-9`}
-            >
-              👇
-            </span>
-          </p>
-        </div>
-        <section className="flex gap-28 mt-5 max-md:flex-col">
-          <div className="flex gap-5 items-center">
-            <MapIcon size={52} />
-            <div>
-              <h5 className="pb-3">
-                {language == "de" ? "Standort" : "Location"}
-              </h5>
-              <p className="font-normal">
-                {language == "de" ? "Hannover" : "Hannover, Germany"}
-              </p>
-            </div>
+      <article className="w-full flex flex-col items-center justify-center gap-10 mt-20">
+        <section
+          ref={contactRef}
+          id="contact"
+          className="py-24 px-4 text-2xl font-bold flex flex-col items-center justify-center bg-gray-100 dark:bg-slate-900 rounded-3xl  dark:bg-opacity-80 backdrop-blur-xl bg-opacity-80 dark:backdrop-blur-xl max-md:mx-0"
+        >
+          <div className="mb-10">
+            <h2 className="text-blue-600 text-3xl mb-6 text-center">
+              {language == "de" ? "Kontakt" : "Contact"}
+            </h2>
+            <p className="text-center relative">
+              {language == "de" ? "Schreib mir gerne!" : "Hit me up!"}
+              <span
+                className={`${
+                  isVisible ? "waitAnimate" : ""
+                } absolute top-0 -right-9`}
+              >
+                👇
+              </span>
+            </p>
           </div>
-          <div className="flex gap-5 items-center">
-            <MailIcon size={52} />
-            <div>
-              <h5 className="pb-3">{language == "de" ? "E-Mail" : "Mail"}</h5>
-              <a className="font-normal" href="mailto:guski.jannik@gmail.com">
-                guski.jannik@gmail.com
-              </a>
+          <section className="flex gap-28 mt-5 max-md:flex-col">
+            <div className="flex gap-5 items-center">
+              <MapIcon size={52} />
+              <div>
+                <h5 className="pb-3">
+                  {language == "de" ? "Standort" : "Location"}
+                </h5>
+                <p className="font-normal">
+                  {language == "de" ? "Hannover" : "Hannover, Germany"}
+                </p>
+              </div>
             </div>
-          </div>
+            <div className="flex gap-5 items-center">
+              <MailIcon size={52} />
+              <div>
+                <h5 className="pb-3">{language == "de" ? "E-Mail" : "Mail"}</h5>
+                <a className="font-normal" href="mailto:guski.jannik@gmail.com">
+                  guski.jannik@gmail.com
+                </a>
+              </div>
+            </div>
+          </section>
         </section>
-      </section>
+      </article>
     </>
   );
 };

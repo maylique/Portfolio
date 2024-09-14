@@ -37,12 +37,6 @@ html {
   min-height: 225dvh;
 }
 
-.minWidthMargin {
-  margin-left: 30%;
-  margin-right: 30%;
-  min-width: fit-content;
-}
-
-iframe {
+*/ iframe {
   border-radius: 4rem;
 }

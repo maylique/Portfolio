@@ -11,18 +11,10 @@ import * as THREE from "three";
 import { useTheme } from "@/provider/ThemeProvider";
 
 const Home = () => {
-  const sendGetRequest = async () => {
-    try {
-      const response = await fetch("https://toktok-backend.abothke.dev/ping/");
-      if (!response.ok) {
-        throw new Error("HTTP error! status: " + response.status);
-      }
-      const data = await response.json();
-      // Hier können Sie die Daten verwenden, die vom Server empfangen wurden
-      console.log(data);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
+  const sendGetRequest = () => {
+    fetch("https://toktok-backend.abothke.dev/ping/", {
+      method: "GET",
+    });
   };
 
   useEffect(() => {
