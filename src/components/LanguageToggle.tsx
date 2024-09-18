@@ -91,7 +91,10 @@ export function LanguageToggle() {
           <span className="sr-only">Toggle Language</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
+      <DropdownMenuContent
+        onCloseAutoFocus={(e) => e.preventDefault()}
+        align="end"
+      >
         <DropdownMenuItem onClick={() => handleClick("de")}>
           Deutsch
         </DropdownMenuItem>
