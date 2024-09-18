@@ -75,29 +75,15 @@ const Home = () => {
     };
   }, [theme]); // theme als Abhängigkeit hinzugefügt
 
-  const [overlayScrollbarsApplied, setOverlayScrollbarsApplied] =
-    useState(true);
-  const [bodyOverlayScrollbarsApplied, setBodyOverlayScrollbarsApplied] =
-    useState<boolean | null>(null);
-
-  const [initBodyOverlayScrollbars, getBodyOverlayScrollbarsInstance] =
-    useOverlayScrollbars({
-      defer: true,
-      events: {
-        initialized: () => {
-          setBodyOverlayScrollbarsApplied(true);
-        },
-        destroyed: () => {
-          setBodyOverlayScrollbarsApplied(false);
-        },
+  const [initBodyOverlayScrollbars] = useOverlayScrollbars({
+    defer: true,
+    options: {
+      scrollbars: {
+        theme: `os-theme-${oppositeTheme}`,
+        clickScroll: true,
       },
-      options: {
-        scrollbars: {
-          theme: `os-theme-${oppositeTheme}`,
-          clickScroll: true,
-        },
-      },
-    });
+    },
+  });
 
   useEffect(() => {
     initBodyOverlayScrollbars(document.body);
