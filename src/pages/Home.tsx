@@ -5,24 +5,24 @@ import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
 import Projects from "@/components/Projects";
 import { useLanguage } from "@/provider/LanguageProvider";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import FOG from "vanta/dist/vanta.fog.min";
 import * as THREE from "three";
 import { useTheme } from "@/provider/ThemeProvider";
+import "overlayscrollbars/overlayscrollbars.css";
+import {
+  OverlayScrollbarsComponent,
+  useOverlayScrollbars,
+} from "overlayscrollbars-react";
 
 const Home = () => {
-  const sendGetRequest = () => {
-    fetch("https://toktok-backend.abothke.dev/ping/", {
-      method: "GET",
-    });
-  };
-
-  useEffect(() => {
-    sendGetRequest();
-  }, []);
-
   const { language }: { language: string } = useLanguage();
   const { theme: currentTheme }: { theme: string } = useTheme();
+  const oppositeTheme = useMemo(
+    () => (currentTheme === "light" ? "dark" : "light"),
+    [currentTheme]
+  );
+
   const [theme, setTheme] = useState<string>(currentTheme);
   useEffect(() => {
     setTheme(currentTheme);
@@ -75,16 +75,55 @@ const Home = () => {
     };
   }, [theme]); // theme als Abhängigkeit hinzugefügt
 
+  const [overlayScrollbarsApplied, setOverlayScrollbarsApplied] =
+    useState(true);
+  const [bodyOverlayScrollbarsApplied, setBodyOverlayScrollbarsApplied] =
+    useState<boolean | null>(null);
+
+  const [initBodyOverlayScrollbars, getBodyOverlayScrollbarsInstance] =
+    useOverlayScrollbars({
+      defer: true,
+      events: {
+        initialized: () => {
+          setBodyOverlayScrollbarsApplied(true);
+        },
+        destroyed: () => {
+          setBodyOverlayScrollbarsApplied(false);
+        },
+      },
+      options: {
+        scrollbars: {
+          theme: `os-theme-${oppositeTheme}`,
+          clickScroll: true,
+        },
+      },
+    });
+
+  useEffect(() => {
+    initBodyOverlayScrollbars(document.body);
+  }, [initBodyOverlayScrollbars]);
+
   return (
     <>
       <Navbar language={language} />
-      <div className="container" ref={vantaRef}>
-        <Hero language={language} />
-        <About language={language} />
-        <Projects language={language} />
-        <Contact language={language} />
-        <Footer language={language} />
-      </div>
+      <OverlayScrollbarsComponent
+        element="span"
+        events={{
+          scroll: () => {
+            /* ... */
+          },
+        }}
+        defer
+        className="floatScroll"
+      >
+        <div className="container" ref={vantaRef}>
+          <Hero language={language} />
+          <About language={language} />
+          <Projects language={language} />
+          <Contact language={language} />
+          <Footer language={language} />
+        </div>
+      </OverlayScrollbarsComponent>
     </>
   );
 };

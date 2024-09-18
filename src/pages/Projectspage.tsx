@@ -1,25 +1,26 @@
 import Navbar from "@/components/Navbar";
 import Projects from "@/components/Projects";
 import { useLanguage } from "@/provider/LanguageProvider";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import FOG from "vanta/dist/vanta.fog.min";
 import * as THREE from "three";
 import { useTheme } from "@/provider/ThemeProvider";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import "overlayscrollbars/overlayscrollbars.css";
+import {
+  OverlayScrollbarsComponent,
+  useOverlayScrollbars,
+} from "overlayscrollbars-react";
 
 const Projectspage = () => {
-  const sendPing = () => {
-    navigator.sendBeacon("https://toktok-backend.abothke.dev/ping/");
-  };
-
-  useEffect(() => {
-    sendPing();
-  }, []);
-
   const { language }: { language: string } = useLanguage();
   const { theme: currentTheme }: { theme: string } = useTheme();
+  const oppositeTheme = useMemo(
+    () => (currentTheme === "light" ? "dark" : "light"),
+    [currentTheme]
+  );
   const [theme, setTheme] = useState<string>(currentTheme);
   useEffect(() => {
     setTheme(currentTheme);
@@ -73,48 +74,87 @@ const Projectspage = () => {
       if (vantaEffect) vantaEffect.destroy();
     };
   }, [theme]); // theme als Abhängigkeit hinzugefügt
+
+  const [overlayScrollbarsApplied, setOverlayScrollbarsApplied] =
+    useState(true);
+  const [bodyOverlayScrollbarsApplied, setBodyOverlayScrollbarsApplied] =
+    useState<boolean | null>(null);
+
+  const [initBodyOverlayScrollbars, getBodyOverlayScrollbarsInstance] =
+    useOverlayScrollbars({
+      defer: true,
+      events: {
+        initialized: () => {
+          setBodyOverlayScrollbarsApplied(true);
+        },
+        destroyed: () => {
+          setBodyOverlayScrollbarsApplied(false);
+        },
+      },
+      options: {
+        scrollbars: {
+          theme: `os-theme-${oppositeTheme}`,
+          clickScroll: true,
+        },
+      },
+    });
+
+  useEffect(() => {
+    initBodyOverlayScrollbars(document.body);
+  }, [initBodyOverlayScrollbars]);
   return (
     <>
       <Navbar language={language} />
-      <div className="container2" ref={vantaRef}>
-        <Projects language={language} />
-        <div className="flex justify-center items-center gap-10 mt-20 mb-20 relative">
-          <h2 className="font-bold text-3xl absolute -top-36">
-            Code & Demovideos
-          </h2>
-          <article className="flex gap-56 items-center justify-center">
-            <section className=" flex gap-14 flex-col place-items-center">
-              <Button className="dark: bg-slate-800 dark:text-white text-xl p-8 hover:bg-slate-500">
-                <Link to="https://github.com/maylique/TokTok">
-                  Cringestagram Codebase
-                </Link>
-              </Button>
-              <iframe
-                width="390"
-                height="798"
-                src="https://www.youtube.com/embed/ry9bcTnnzLY"
-                title="Cringestagram Demovideo"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              ></iframe>
-            </section>
-            <section className="w-full flex items-center justify-center gap-14 flex-col place-items-center">
-              <Button className="dark: bg-slate-800 dark:text-white text-xl p-8 hover:bg-slate-500">
-                <Link to="https://github.com/abothke/e-shop-react">
-                  eSchrott Codebase
-                </Link>
-              </Button>
-              <iframe
-                width="400"
-                height="798"
-                src="https://www.youtube.com/embed/EcIP_aasTiY"
-                title="eSchrott Demovideo"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              ></iframe>
-            </section>
-          </article>
+      <OverlayScrollbarsComponent
+        element="span"
+        events={{
+          scroll: () => {
+            /* ... */
+          },
+        }}
+        defer
+        className="floatScroll"
+      >
+        <div className="container2" ref={vantaRef}>
+          <Projects language={language} />
+          <div className="flex justify-center items-center gap-10 mt-20 mb-20 relative">
+            <h2 className="font-bold text-3xl absolute -top-36">
+              Code & Demovideos
+            </h2>
+            <article className="flex gap-56 items-center justify-center">
+              <section className=" flex gap-14 flex-col place-items-center">
+                <Button className="dark: bg-slate-800 dark:text-white text-xl p-8 hover:bg-slate-500">
+                  <Link to="https://github.com/maylique/TokTok">
+                    Cringestagram Codebase
+                  </Link>
+                </Button>
+                <iframe
+                  width="390"
+                  height="798"
+                  src="https://www.youtube.com/embed/ry9bcTnnzLY"
+                  title="Cringestagram Demovideo"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                ></iframe>
+              </section>
+              <section className="w-full flex items-center justify-center gap-14 flex-col place-items-center">
+                <Button className="dark: bg-slate-800 dark:text-white text-xl p-8 hover:bg-slate-500">
+                  <Link to="https://github.com/abothke/e-shop-react">
+                    eSchrott Codebase
+                  </Link>
+                </Button>
+                <iframe
+                  width="400"
+                  height="798"
+                  src="https://www.youtube.com/embed/EcIP_aasTiY"
+                  title="eSchrott Demovideo"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                ></iframe>
+              </section>
+            </article>
+          </div>
+          <Footer language={language} />
         </div>
-        <Footer language={language} />
-      </div>
+      </OverlayScrollbarsComponent>
     </>
   );
 };
