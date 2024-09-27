@@ -29,12 +29,10 @@ html {
 
 .container {
   width: 100vw;
-  min-height: 325dvh;
 }
 
 .container2 {
   width: 100vw;
-  min-height: 225dvh;
 }
 
 iframe {
