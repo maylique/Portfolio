@@ -55,7 +55,7 @@ const Projectspage = () => {
         mouseControls: true,
         touchControls: true,
         gyroControls: false,
-        minHeight: 320.0,
+        minHeight: 2462.0,
         minWidth: 200.0,
         highlightColor: highlightColor,
         midtoneColor: midtoneColor,
@@ -102,13 +102,13 @@ const Projectspage = () => {
         defer
         className="floatScroll"
       >
-        <div className="container2" ref={vantaRef}>
+        <div className="container2 " ref={vantaRef}>
           <Projects language={language} />
           <div className="flex justify-center items-center gap-10 mt-20 mb-20 relative">
             <h2 className="font-bold text-3xl absolute -top-36">
               Code & Demovideos
             </h2>
-            <article className="flex gap-56 items-center justify-center">
+            <article className="flex gap-56 items-center justify-center max-md:flex-col">
               <section className=" flex gap-14 flex-col place-items-center">
                 <Button className="dark: bg-slate-800 dark:text-white text-xl p-8 hover:bg-slate-500">
                   <Link to="https://github.com/maylique/TokTok">

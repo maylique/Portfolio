@@ -57,7 +57,7 @@ const Home = () => {
         mouseControls: true,
         touchControls: true,
         gyroControls: false,
-        minHeight: 320,
+        minHeight: 3560.0,
         minWidth: 200.0,
         highlightColor: highlightColor,
         midtoneColor: midtoneColor,
