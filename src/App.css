@@ -28,8 +28,19 @@ html {
 }
 
 .container {
-  height: 3560px;
   width: 100vw;
+}
+
+@supports (-webkit-appearance: none) {
+  .container {
+    height: 3560px; /* Höhe für Chromium-Browser */
+  }
+}
+
+@supports (-moz-appearance: none) {
+  .container {
+    height: 3540px; /* Höhe für Firefox */
+  }
 }
 
 .container2 {
