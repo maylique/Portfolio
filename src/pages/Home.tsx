@@ -81,6 +81,8 @@ const Home = () => {
       scrollbars: {
         theme: `os-theme-${oppositeTheme}`,
         clickScroll: true,
+        autoHide: "leave",
+        autoHideDelay: 1000,
       },
     },
   });

@@ -33,13 +33,13 @@ html {
 
 @supports (-webkit-appearance: none) {
   .container {
-    height: 3560px; /* Höhe für Chromium-Browser */
+    min-height: 3560px; /* Höhe für Chromium-Browser */
   }
 }
 
 @supports (-moz-appearance: none) {
   .container {
-    height: 3540px; /* Höhe für Firefox */
+    min-height: 3540px; /* Höhe für Firefox */
   }
 }
 
