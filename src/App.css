@@ -30,19 +30,9 @@ html {
 .container {
   width: 100vw;
 }
-
-@supports (-webkit-appearance: none) {
-  .container {
-    min-height: 3560px; /* Höhe für Chromium-Browser */
-  }
+.vanta-canvas {
+  min-height: 100%;
 }
-
-@supports (-moz-appearance: none) {
-  .container {
-    min-height: 3540px; /* Höhe für Firefox */
-  }
-}
-
 .container2 {
   width: 100vw;
 }
