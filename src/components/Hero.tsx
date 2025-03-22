@@ -85,7 +85,9 @@ const Hero = ({ language }: { language: string }) => {
         </section>
         <section className="m-4 flex gap-10 items-center mt-10 max-md:flex-col max-md:mt-0 max-md:mb-6">
           <div className="flex gap-5 max-md:flex-col relative">
-            <h5 className="text-xl font-bold pr-6 max-md:pr-0">Tech Stack</h5>
+            <h5 className="text-xl font-bold pr-6 max-md:pr-0 whitespace-nowrap">
+              Tech Stack
+            </h5>
             {matches ? (
               <Popover>
                 <PopoverTrigger
