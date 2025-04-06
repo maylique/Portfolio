@@ -8,7 +8,7 @@ const Footer = ({ language }: { language: string }) => {
         <h6>
           {language == "de"
             ? "Urheberrecht. ® Alle Rechte vorbehalten."
-            : "Copyright © 2024. All rights are reserved."}
+            : "Copyright © 2025. All rights are reserved."}
         </h6>
         <div className="flex gap-4">
           <Link to="https://www.linkedin.com/in/jannik-guski-b15519304">
