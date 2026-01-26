@@ -6,6 +6,7 @@ import { LanguageProvider } from "./provider/LanguageProvider";
 import Cringestagram from "./pages/Cringestagram";
 import Eschrott from "./pages/Eschrott";
 import Projectspage from "./pages/Projectspage";
+import Hitpanel from "./pages/Hitpanel";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path="/Cringestagram" element={<Cringestagram />} />
             <Route path="/eSchrott" element={<Eschrott />} />
             <Route path="/projects" element={<Projectspage />} />
+            <Route path="/hitpanel" element={<Hitpanel />} />
           </Routes>
         </LanguageProvider>
       </ThemeProvider>
